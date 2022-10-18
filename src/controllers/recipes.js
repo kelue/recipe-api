@@ -1,5 +1,6 @@
 const service = require("../services/recipes")
 
+//middleware for check if recipe exists
 const recipeExist = async (req, res, next) => {
     const recipe = await service.get(req.params.id)
 
@@ -13,6 +14,7 @@ const recipeExist = async (req, res, next) => {
       }
 }
 
+//gets all recipes
 const getAllRecipes = async (req, res, next) => {
     try{
         res.json({data: await service.getAll()})
@@ -21,15 +23,16 @@ const getAllRecipes = async (req, res, next) => {
     }
 }
 
+//get a single recipe
 const getRecipe = async (req, res, next) => {
     try {
-      res.json({ data: res.local.recipe });
+      res.json({ data: res.local.recipe }); //this is the recipe received from the middleware
     } catch (error) {
       next(error);
     }
   };
 
-
+//add a recipe and save it
 const saveRecipe = async (req, res, next) => {
     try {
       
@@ -55,9 +58,9 @@ const saveRecipe = async (req, res, next) => {
     }
   };
 
+  //update a recipe and re save the entire file
   const updateRecipe = async (req, res, next) => {
     try {
-       await service.get(req.params.id);
 
       const {
         id,
@@ -83,10 +86,10 @@ const saveRecipe = async (req, res, next) => {
     }
   };
 
+  //delete the recipe
   const deleteRecipe = async (req, res, next) => {
     try {
-       await service.get(req.params.id);
-  
+
       await service.remove(req.params.id);
       res.sendStatus(204)
     } catch (error) {
@@ -94,6 +97,7 @@ const saveRecipe = async (req, res, next) => {
     }
   };
 
+  //all the functions that have array use the recipe exists middle ware checker before they run
 module.exports = {
     getAllRecipes,
     getRecipe: [recipeExist, getRecipe], 

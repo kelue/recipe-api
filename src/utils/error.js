@@ -6,6 +6,7 @@ class CustomError extends Error {
     }
   }
   
+  //error handling function that catches the errors and so that the app does not crash in production
   const handleError = (err, req, res, next) => {
     let { statusCode, message } = err;
   
