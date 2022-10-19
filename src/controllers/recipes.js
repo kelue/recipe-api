@@ -3,13 +3,12 @@ const service = require("../services/recipes")
 //middleware for check if recipe exists
 const recipeExist = async (req, res, next) => {
     const recipe = await service.get(req.params.id)
-
     if (recipe === undefined) {
         const err = new Error("Recipe not found");
         err.statusCode = 404
         next(err)
       }else{
-        res.local.recipe = recipe
+        res.locals.recipe = recipe
         next()
       }
 }
@@ -26,7 +25,7 @@ const getAllRecipes = async (req, res, next) => {
 //get a single recipe
 const getRecipe = async (req, res, next) => {
     try {
-      res.json({ data: res.local.recipe }); //this is the recipe received from the middleware
+      res.json({ data: res.locals.recipe }); //this is the recipe received from the middleware
     } catch (error) {
       next(error);
     }

@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const path = require("path");
 
 const { JWT_SECRET } = process.env;
+
 const usersFilePath = path.join(__dirname, "../../db/users.json");
 
 //authenticate user
