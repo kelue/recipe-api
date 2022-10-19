@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "e92d6a29-c976-4149-8372-874c681dcfb8",
+		"name": "express-recipes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Unauthorized request",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Edamame recipes\",\n  \"healthLabels\": [\n    \"Sugar-Conscious\",\n    \"Vegan\",\n    \"Vegetarian\",\n    \"Peanut-Free\",\n    \"Tree-Nut-Free\",\n    \"Alcohol-Free\"\n  ],\n  \"cookTimeMinutes\": 127,\n  \"prepTimeMinutes\": 20,\n  \"ingredients\": [\n    \"salt\",\n    \"1 one-pound bag edamame\",\n    \"1 teaspoon Seasoned Salt\"\n  ]\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/recipes/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"recipes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Signup request",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Hou Test\",\n    \"email\": \"houtest@gmail.com\",\n    \"password\": \"verysecurepassword\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/users/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authorized request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjQzNjMwMDk2LCJleHAiOjE2NDM3MTY0OTZ9.JguD6VUhe6tacW6DN_4ujV3xZa2GrhMxHnNbJZpYsGQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Edamame recipes\",\n  \"healthLabels\": [\n    \"Sugar-Conscious\",\n    \"Vegan\",\n    \"Vegetarian\",\n    \"Peanut-Free\",\n    \"Tree-Nut-Free\",\n    \"Alcohol-Free\"\n  ],\n  \"cookTimeMinutes\": 127,\n  \"prepTimeMinutes\": 20,\n  \"ingredients\": [\n    \"salt\",\n    \"1 one-pound bag edamame\",\n    \"1 teaspoon Seasoned Salt\"\n  ]\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/recipes/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"recipes",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
